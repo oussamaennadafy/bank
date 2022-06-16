@@ -10,7 +10,7 @@ fetch(url)
 .then(data => {
  data.forEach(row => {
   // console.log(row);
-   const date = row.updated_at;
+   const date = row.created_at;
   output += `
   <tr class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
       <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
@@ -51,19 +51,21 @@ async function editTransaction(id) {
    // console.log(data);
 
    // set data to form
-   const date = data.updated_at;
+   const date = data.created_at;
+
    // document.querySelector('#date').value = date.split('T')[0];
    document.querySelector('#libelle').value = data.libelle;
    document.querySelector('#recette').value = data.recette;
    document.querySelector('#depense').value = data.depense;
    document.querySelector('#solde').value = data.solde;
-   //display html form then
-   document.querySelector('#authentication-modal').classList.remove('hidden');
+
+   //display html form after loading data from api
+   document.querySelector('#edit-modal').classList.remove('hidden');
    document.querySelector('#overlay').classList.remove('hidden');
 
    //close the form
    document.querySelector('#close-edit').addEventListener('click', () => {
-    document.querySelector('#authentication-modal').classList.add('hidden');
+    document.querySelector('#edit-modal').classList.add('hidden');
     document.querySelector('#overlay').classList.add('hidden');
    })
 
@@ -92,7 +94,7 @@ async function editTransaction(id) {
      //smooth refresh
      read();
      //close the form
-      document.querySelector('#authentication-modal').classList.add('hidden');
+      document.querySelector('#edit-modal').classList.add('hidden');
       document.querySelector('#overlay').classList.add('hidden');
 
     })
@@ -115,6 +117,49 @@ function deleteTransaction(id) {
   .catch(err => console.log(err));
  }
 
+
+ function addTransaction() {
+  //get data from form
+  const libelle = document.querySelector('#libelle').value;
+  const recette = document.querySelector('#recette').value;
+  const depense = document.querySelector('#depense').value;
+  const solde = document.querySelector('#solde').value;
+ //  const transaction = {
+ //   libelle: libelle,
+ //   recette: recette,
+ //   depense: depense,
+ //   solde: solde,
+ //   date : new Date()
+ // }
+ const transaction = new FormData();
+ transaction.append('libelle', libelle);
+ transaction.append('recette', recette);
+ transaction.append('depense', depense);
+ transaction.append('solde', solde);
+ transaction.append('date', new Date());
+ //send data to api
+ fetch(url, {
+  method: 'POST',
+  headers: {
+   'Content-Type': 'application/json'
+  },
+  body: transaction
+ })
+ .then(res => res.json())
+ .then(res => read())
+ .catch(err => console.log(err));
+ }
+
+  // display form
+  document.querySelector('#add').addEventListener('click', () => {
+   document.querySelector('#add-modal').classList.remove('hidden'); //remove hidden class
+   document.querySelector('#overlay').classList.remove('hidden'); //remove hidden class
+   });
+   //close the form
+   document.querySelector('#close-add').addEventListener('click', () => {
+    document.querySelector('#add-modal').classList.add('hidden'); //add hidden class
+    document.querySelector('#overlay').classList.add('hidden'); //add hidden class
+   });
  read();
 
 

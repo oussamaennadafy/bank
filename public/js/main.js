@@ -118,39 +118,33 @@ function deleteTransaction(id) {
  }
 
 
- function addTransaction() {
+  function addTransaction() {
   //get data from form
   const libelle = document.querySelector('#libelle-add').value;
   const recette = document.querySelector('#recette-add').value;
   const depense = document.querySelector('#depense-add').value;
   const solde = document.querySelector('#solde-add').value;
-  const transaction = {
-   libelle: libelle,
-   recette: recette,
-   depense: depense,
-   solde: solde,
-   date : new Date().toISOString().slice(0, 10),
- }
- // const transaction = new FormData();
- // transaction.append('libelle', libelle);
- // transaction.append('recette', recette);
- // transaction.append('depense', depense);
- // transaction.append('solde', solde);
- // transaction.append('date', new Date().toISOString().slice(0, 10));
 
- // for (const value of transaction.values()) {
- //  console.log(value);
- // }
+  const transaction = new FormData();
+  transaction.append('libelle', libelle);
+  transaction.append('recette', recette);
+  transaction.append('depense', depense);
+  transaction.append('solde', solde);
+  transaction.append('date', new Date().toISOString().slice(0, 10));
+
  //send data to api
- fetch(url, {
+ fetch('http://127.0.0.1:8000/api/transactions' , {
   method: 'POST',
-  headers: {
-   'Content-Type': 'application/json'
-  },
   body: transaction
  })
  .then(res => res.json())
- .then(res => read())
+ .then(res => {
+  //close the form
+  document.querySelector('#add-modal').classList.add('hidden');
+  document.querySelector('#overlay').classList.add('hidden');
+  //smooth refresh
+  read();
+ })
  .catch(err => console.log(err));
  }
 

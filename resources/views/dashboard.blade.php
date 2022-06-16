@@ -112,6 +112,7 @@
                             <label for="solde" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Solde</label>
                             <input type="number" name="solde" id="solde-add" placeholder="solde" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                         </div>
+                        <p class='text-center text-red-600 font-semibold my-2' id='error-msg'></p>
                         <a id='submit' onclick="addTransaction()" class="w-full block cursor-pointer text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit Transaction</a>
                     </form>
                 </div>
@@ -121,7 +122,9 @@
     {{-- end add modal --}}
     <button id='add' class="block mx-auto mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
         add transaction +
-      </button>
+    </button>
+
+    <footer class='w-full h-14 bg-gray-200 mt-14 block'></footer>
      
 
 <script src={{ asset('js/main.js') }}></script>

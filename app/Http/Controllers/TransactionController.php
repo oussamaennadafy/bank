@@ -40,7 +40,8 @@ class TransactionController extends Controller
             'libelle' => $request->libelle,
             'recette' => $request->recette,
             'depense' => $request->depense,
-            'solde' => $request->solde
+            'solde' => $request->solde,
+            'date' => $request->date
         ]);
 
         return response()->json(['message' => 'Transaction created']);

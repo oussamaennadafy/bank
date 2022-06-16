@@ -9,7 +9,6 @@ fetch(url)
 .then(response => response.json())
 .then(data => {
  data.forEach(row => {
-  // console.log(row);
    const date = row.created_at;
   output += `
   <tr class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
@@ -32,7 +31,7 @@ fetch(url)
           <a onclick='editTransaction(${row.id})' class="font-medium cursor-pointer text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
       </td>
       <td class="px-6 py-4">
-          <a onclick='deleteTransaction(${row.id})' class="font-medium cursor-pointer text-blue-600 dark:text-blue-500 hover:underline">Delete</a>
+          <a onclick='deleteTransaction(${row.id})' class="select-none font-medium cursor-pointer text-blue-600 dark:text-blue-500 hover:underline">Delete</a>
       </td>
    </tr>
   `;
@@ -124,6 +123,13 @@ function deleteTransaction(id) {
   const recette = document.querySelector('#recette-add').value;
   const depense = document.querySelector('#depense-add').value;
   const solde = document.querySelector('#solde-add').value;
+  //error handling
+  const errorMsg = document.querySelector('#error-msg');
+  //clear error message
+  errorMsg.textContent = '';
+
+  //sanitize data
+  if(libelle == '' || recette == '' || depense == '' || solde == '') return errorMsg.textContent = 'Please fill all fields';
 
   const transaction = new FormData();
   transaction.append('libelle', libelle);
@@ -144,6 +150,11 @@ function deleteTransaction(id) {
   document.querySelector('#overlay').classList.add('hidden');
   //smooth refresh
   read();
+  //reset form data
+  document.querySelector('#libelle-add').value = '';
+  document.querySelector('#recette-add').value = '';
+  document.querySelector('#depense-add').value = '';
+  document.querySelector('#solde-add').value = '';
  })
  .catch(err => console.log(err));
  }
@@ -157,8 +168,11 @@ function deleteTransaction(id) {
    document.querySelector('#close-add').addEventListener('click', () => {
     document.querySelector('#add-modal').classList.add('hidden'); //add hidden class
     document.querySelector('#overlay').classList.add('hidden'); //add hidden class
+    //clear error message
+    document.querySelector('#error-msg').textContent = '';
    });
  read();
+
 
 
  

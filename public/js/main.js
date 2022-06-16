@@ -70,11 +70,13 @@ async function editTransaction(id) {
 
    //update data
    document.querySelector('#update').addEventListener('click', (e) => {
-    // const date = document.querySelector('#date').value;
-    const libelle = document.querySelector('#libelle').value;
-    const recette = document.querySelector('#recette').value;
-    const depense = document.querySelector('#depense').value;
-    const solde = document.querySelector('#solde').value;
+     // const date = document.querySelector('#date').value;
+     const libelle = document.querySelector('#libelle').value;
+     const recette = document.querySelector('#recette').value;
+     const depense = document.querySelector('#depense').value;
+     const solde = document.querySelector('#solde').value;
+     //sanitize data
+     if(libelle == '' || recette == '' || depense == '' || solde == '') return document.querySelector('#error-msg-edit').textContent = 'Please fill all fields';
     const transaction = {
      date: date,
      libelle: libelle,

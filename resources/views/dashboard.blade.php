@@ -78,6 +78,7 @@
                             <label for="solde" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Solde</label>
                             <input type="solde" name="solde" id="solde" placeholder="deoense" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                         </div>
+                        <p class='text-center text-red-600 font-semibold my-2' id='error-msg-edit'></p>
                         <a id='update' class="w-full block cursor-pointer text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update Transaction</a>
                     </form>
                 </div>
@@ -128,10 +129,10 @@
         add transaction +
     </button>
 
-    <footer class='w-full h-14 bg-gray-200 mt-14 block'>
+    {{-- <footer class='w-full h-14 bg-gray-200 mt-14 block'>
         <div class='w-full h-full flex justify-center items-center'>
             <p class='text-gray-600 text-center text-sm'>   &copy; 2020 - {{ date('Y') }}</p>   </div>
-    </footer>
+    </footer> --}}
      
 
 <script src={{ asset('js/main.js') }}></script>

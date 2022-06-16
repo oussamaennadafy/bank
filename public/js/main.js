@@ -118,9 +118,10 @@ function deleteTransaction(id) {
  
  document.querySelector('#recete-btn').addEventListener('click', ()=> {
   //change the form to recette
+  document.querySelector('#recette-input').value = 0;
+  document.querySelector('#solde-add').value = 0;
   document.querySelector('#recette-input').classList.remove('hidden');
   document.querySelector('#depense-input').classList.add('hidden');
-  document.querySelector('#recette-input').value = '';
   //change the button to depense
   document.querySelector('#depense-btn').classList.remove('border-slate-800');
   document.querySelector('#depense-btn').classList.add('border-transparent');
@@ -129,6 +130,8 @@ function deleteTransaction(id) {
  })
  document.querySelector('#depense-btn').addEventListener('click', ()=> {
   //change the form to recette
+  document.querySelector('#depense-input').value = 0;
+  document.querySelector('#solde-add').value = 0;
   document.querySelector('#recette-input').classList.add('hidden');
   document.querySelector('#depense-input').classList.remove('hidden');
   //change the button to depense
@@ -174,9 +177,9 @@ function deleteTransaction(id) {
   read();
   //reset form data
   document.querySelector('#libelle-add').value = '';
-  document.querySelector('#recette-add').value = '';
-  document.querySelector('#depense-add').value = '';
-  document.querySelector('#solde-add').value = '';
+  document.querySelector('#recette-add').value = 0;
+  document.querySelector('#depense-add').value = 0;
+  document.querySelector('#solde-add').value = 0;
  })
  .catch(err => console.log(err));
  }

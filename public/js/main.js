@@ -115,9 +115,31 @@ function deleteTransaction(id) {
   .then(res => read())
   .catch(err => console.log(err));
  }
-
+ 
+ document.querySelector('#recete-btn').addEventListener('click', ()=> {
+  //change the form to recette
+  document.querySelector('#recette-input').classList.remove('hidden');
+  document.querySelector('#depense-input').classList.add('hidden');
+  document.querySelector('#recette-input').value = '';
+  //change the button to depense
+  document.querySelector('#depense-btn').classList.remove('border-slate-800');
+  document.querySelector('#depense-btn').classList.add('border-transparent');
+  document.querySelector('#recete-btn').classList.add('border-slate-800');
+  document.querySelector('#recete-btn').classList.remove('border-transparent');
+ })
+ document.querySelector('#depense-btn').addEventListener('click', ()=> {
+  //change the form to recette
+  document.querySelector('#recette-input').classList.add('hidden');
+  document.querySelector('#depense-input').classList.remove('hidden');
+  //change the button to depense
+  document.querySelector('#depense-btn').classList.add('border-slate-800');
+  document.querySelector('#depense-btn').classList.remove('border-transparent');
+  document.querySelector('#recete-btn').classList.remove('border-slate-800');
+  document.querySelector('#recete-btn').classList.add('border-transparent');
+ })
 
   function addTransaction() {
+  //choose the type of transaction
   //get data from form
   const libelle = document.querySelector('#libelle-add').value;
   const recette = document.querySelector('#recette-add').value;
@@ -170,6 +192,11 @@ function deleteTransaction(id) {
     document.querySelector('#overlay').classList.add('hidden'); //add hidden class
     //clear error message
     document.querySelector('#error-msg').textContent = '';
+    //reset form data
+    document.querySelector('#libelle-add').value = '';
+    document.querySelector('#recette-add').value = 0;
+    document.querySelector('#depense-add').value = '';
+    document.querySelector('#solde-add').value = '';
    });
  read();
 

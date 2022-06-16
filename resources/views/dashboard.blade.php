@@ -95,18 +95,22 @@
                 </button>
                 <div class="py-6 px-6 lg:px-8">
                     <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Add Transaction</h3>
+                    <div class='w-1/2 justify-between text-white flex gap-4 rounded-lg bg-slate-700 mx-auto'>
+                        <a id='depense-btn' class="px-3 hover:border-slate-800 select-none py-2 bg-slate-600 cursor-pointer border border-slate-800 rounded-full text-center"> depense </a>
+                        <a id='recete-btn' class="px-3 select-none py-2 bg-slate-600 cursor-pointer border border-transparent hover:border-slate-800 rounded-full text-center"> recete </a>
+                    </div>
                     <form class="space-y-5">
                         <div>
                             <label for="libelle" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Libelle</label>
                             <input type="text" name="libelle" id="libelle-add" placeholder="Libelle" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                         </div>
-                        <div>
-                            <label for="recette" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">recette</label>
-                            <input type="number" name="recette" id="recette-add" placeholder="recette" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                        </div>
-                        <div>
+                        <div id='depense-input' >
                             <label for="depense" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">depense</label>
                             <input type="number" name="depense" id="depense-add" placeholder="depense" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                        </div>
+                        <div id='recette-input' class='hidden'>
+                            <label for="recette" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">recette</label>
+                            <input value='0' type="number" name="recette" id="recette-add" placeholder="recette" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                         </div>
                         <div>
                             <label for="solde" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Solde</label>
@@ -124,7 +128,10 @@
         add transaction +
     </button>
 
-    <footer class='w-full h-14 bg-gray-200 mt-14 block'></footer>
+    <footer class='w-full h-14 bg-gray-200 mt-14 block'>
+        <div class='w-full h-full flex justify-center items-center'>
+            <p class='text-gray-600 text-center text-sm'>   &copy; 2020 - {{ date('Y') }}</p>   </div>
+    </footer>
      
 
 <script src={{ asset('js/main.js') }}></script>

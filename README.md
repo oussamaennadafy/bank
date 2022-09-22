@@ -1,6 +1,7 @@
 # web site to manage transactions
 
 ## first i use jetstraem for auth and register and profile info and update
+new
 
 ![Capture d’écran 2022-06-16 151151](https://user-images.githubusercontent.com/83991172/174090074-be09d049-b383-455e-873d-1cfeb9153709.png)
 ![Capture d’écran 2022-06-16 151326](https://user-images.githubusercontent.com/83991172/174093409-2c7a30f6-bc2d-43a7-b3db-8f631442b9e1.png)

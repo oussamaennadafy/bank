@@ -15,6 +15,9 @@
    </head>
    <body>
     <h1 class='text-center my-5 text-2xl font-semibold'>My Transactions</h1>
+    <div class="conter">
+
+    </div>
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-auto w-11/12 md:w-3/4 mt-5">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
